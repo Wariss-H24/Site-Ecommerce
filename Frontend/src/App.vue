@@ -4,8 +4,9 @@ import AppView from './views/AppView.vue';
 </script>
 
 <template>
-  <AppView />
 
+  <AppView />
+ <RouterView />
 </template>
 
 <style scoped></style>

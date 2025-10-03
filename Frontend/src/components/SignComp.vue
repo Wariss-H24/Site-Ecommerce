@@ -10,8 +10,8 @@
               @click="setActiveTab('login')"
               class="flex-1 py-3 px-4 rounded-lg text-center transition-all duration-300"
               :class="activeTab === 'login' 
-                ? 'bg-white text-blue-600 shadow-lg transform scale-105' 
-                : 'bg-white/20 text-white hover:bg-white/30'"
+                ? 'text-black-700 shadow-lg transform scale-105' 
+                : 'bg-white/20 text-black/50 hover:bg-white/30'"
             >
               <i class="fas fa-sign-in-alt mr-2"></i>
               Login 
@@ -20,8 +20,8 @@
               @click="setActiveTab('register')"
               class="flex-1 py-3 px-4 rounded-lg text-center transition-all duration-300"
               :class="activeTab === 'register' 
-                ? 'bg-white text-blue-600 shadow-lg transform scale-105' 
-                : 'bg-white/20 text-white hover:bg-white/30'"
+                ? 'text-black-700 shadow-lg transform scale-105' 
+                : 'bg-white/20 text-black/50 hover:bg-white/30'"
             >
               <i class="fas fa-user-plus mr-2"></i>
               Register
@@ -85,7 +85,7 @@
             <button
               type="submit"
               :disabled="loading"
-              class="w-full hover:bg-blue-600 disabled:bg-blue-400 text-white py-3 px-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center"
+              class="w-full hover:bg-white/50 disabled:bg-blue-400 text-black py-3 px-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center"
             >
               <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
               <i v-else class="fas fa-sign-in-alt mr-2"></i>
@@ -242,7 +242,7 @@
             <button
               type="submit"
               :disabled="loading || !passwordsMatch || !isPasswordStrong"
-              class="w-full bg-green-500 hover:bg-green-600 disabled:bg-green-400 text-white py-3 px-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center"
+              class="w-full bg-green-500 hover:bg-[var(--)] disabled:bg-green-400 text-white py-3 px-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center"
             >
               <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
               <i v-else class="fas fa-user-plus mr-2"></i>
@@ -431,5 +431,9 @@ export default {
 /* Style pour la force du mot de passe */
 .password-strength {
   transition: all 0.3s ease;
+}
+
+input{
+    outline: none;
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup>
-import NavComponent from '@/component/layout/NavComponent.vue';
+import NavComponent from '@/layout/NavComponent.vue';
 
 
 
@@ -7,9 +7,9 @@ import NavComponent from '@/component/layout/NavComponent.vue';
 
 
 <template>
-
+    
 <NavComponent/>
-<RouterView />
+
 </template>
 
 

@@ -1,6 +1,5 @@
 <template>
-  <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50 transition-colors duration-300" 
-       :class="{ 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm': isScrolled }">
+  <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50 transition-colors duration-300 py-3">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
@@ -22,21 +21,12 @@
             <i class="fas fa-home mr-2"></i>
             Accueil
           </router-link>
-          
           <router-link 
-            to="/about" 
+            to="/product" 
             class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
           >
-            <i class="fas fa-info-circle mr-2"></i>
-            Abouts
-          </router-link>
-          
-          <router-link 
-            to="/contact" 
-            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-          >
-            <i class="fas fa-envelope mr-2"></i>
-            Contact
+            
+            Product
           </router-link>
         </div>
 
@@ -57,7 +47,23 @@
             </div>
           </div>
         </div>
-
+        <div>
+                    <router-link 
+            to="/about" 
+            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+          >
+            <i class="fas fa-info-circle mr-2"></i>
+            Abouts
+          </router-link>
+          
+          <router-link 
+            to="/contact" 
+            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+          >
+            <i class="fas fa-envelope mr-2"></i>
+            Contact
+          </router-link>
+        </div>
         <!-- Actions utilisateur -->
         <div class="flex items-center space-x-4">
           <!-- Barre de recherche mobile -->
