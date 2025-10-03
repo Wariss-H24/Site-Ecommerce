@@ -4,6 +4,8 @@ import ContactComp from '@/components/ContactComp.vue'
 import HomeComp from '@/components/HomeComp.vue'
 import SignComp from '@/components/SignComp.vue'
 import ProductsView from '@/views/ProductsView.vue'
+import SignUpComp from '@/components/SignUpComp.vue'
+import RegisterComp from '@/components/RegisterComp.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,9 +16,9 @@ const router = createRouter({
       component: HomeComp,
     },
     {
-      path:'/about',
+      path: '/about',
       name: 'about',
-      component: AboutsComp
+      component: AboutsComp,
     },
     {
       path: '/contact',
@@ -24,15 +26,27 @@ const router = createRouter({
       component: ContactComp,
     },
     {
-      path: '/sign',
-      name: 'sign',
-      component: SignComp,
-    },
-    {
       path: '/product',
       name: 'product',
       component: ProductsView,
-    }
+    },
+    {
+      path: '/sign',
+      name: 'sign',
+      component: SignComp,
+      children: [
+        {
+          path: '',
+          name: 'signUp',
+          component: SignUpComp,
+        },
+        {
+          path: '/register',
+          name: 'register',
+          component: RegisterComp,
+        },
+      ],
+    },
   ],
 })
 
