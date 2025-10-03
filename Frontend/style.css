@@ -1,0 +1,10 @@
+@import "tailwindcss";
+:root {
+  --couleur-principale: #3498db;
+  --couleur-bgAll:#f5f5f5;
+  --couleur-bgnav:#ffffff;
+  --couleur-bgbtn:#2d3a4b;
+  --couleur-deseable:#cccccc;
+  --couleur-hover:#ffe115;
+  --taille-texte: 16px;
+}
