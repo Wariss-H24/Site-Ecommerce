@@ -131,7 +131,7 @@
                   v-model="registerForm.firstName"
                   type="text"
                   required
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-colors"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors"
                   placeholder="Votre prénom"
                 >
               </div>
@@ -143,7 +143,7 @@
                   v-model="registerForm.lastName"
                   type="text"
                   required
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-colors"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500  dark:bg-gray-700 dark:text-white transition-colors"
                   placeholder="Votre nom"
                 >
               </div>
@@ -157,7 +157,7 @@
                 v-model="registerForm.email"
                 type="email"
                 required
-                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-colors"
+                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors"
                 placeholder="votre@email.com"
               >
             </div>
@@ -171,7 +171,7 @@
                   v-model="registerForm.password"
                   :type="showRegisterPassword ? 'text' : 'password'"
                   required
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-colors pr-12"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors pr-12"
                   placeholder="Créez un mot de passe"
                 >
                 <button
@@ -207,7 +207,7 @@
                   v-model="registerForm.confirmPassword"
                   :type="showConfirmPassword ? 'text' : 'password'"
                   required
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-colors pr-12"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white transition-colors pr-12"
                   placeholder="Confirmez votre mot de passe"
                 >
                 <button
@@ -242,7 +242,7 @@
             <button
               type="submit"
               :disabled="loading || !passwordsMatch || !isPasswordStrong"
-              class="w-full bg-green-500 hover:bg-[var(--)] disabled:bg-green-400 text-white py-3 px-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center"
+              class="w-full bg-gray-500 disabled:bg-gray-500 text-white py-3 px-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center"
             >
               <i v-if="loading" class="fas fa-spinner fa-spin mr-2"></i>
               <i v-else class="fas fa-user-plus mr-2"></i>
