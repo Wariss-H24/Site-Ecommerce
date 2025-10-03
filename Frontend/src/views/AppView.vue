@@ -1,4 +1,5 @@
 <script setup>
+import FooterComp from '@/layout/footerComp.vue';
 import NavComponent from '@/layout/NavComponent.vue';
 
 
@@ -7,9 +8,16 @@ import NavComponent from '@/layout/NavComponent.vue';
 
 
 <template>
-    
-<NavComponent/>
 
+<header>
+    <NavComponent/>
+</header>
+<main>
+
+</main>
+<footer>
+    
+</footer>
 </template>
 
 

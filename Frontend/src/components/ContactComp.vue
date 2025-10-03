@@ -1,4 +1,6 @@
 <script setup>
+import FooterComp from '@/layout/footerComp.vue';
+
 
 
 </script>
@@ -10,6 +12,10 @@
         <h1>Contact Page</h1>
     </div>
 
+
+<footer>
+    <FooterComp />
+</footer>
 </template>
 
 
