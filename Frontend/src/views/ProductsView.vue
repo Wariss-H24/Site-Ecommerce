@@ -1,4 +1,6 @@
 <script setup>
+import ProductListeComponet from '@/components/ProductComponent/productListeComponet.vue';
+
 
 
 </script>
@@ -6,7 +8,8 @@
 
 <template>
 
-<h1>Product</h1>
+
+<ProductListeComponet />
 
 </template>
 
