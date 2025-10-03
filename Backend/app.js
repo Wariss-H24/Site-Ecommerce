@@ -15,14 +15,25 @@ app.get("/", (req,res)=>{
 })
 
 app.get("/api/E-commerceProduits", (req, res) => {
-  fs.readFile('./datas/data.json',  (err, data) => {
+  fs.readFile('./datas/data.json', "utf-8", (err, data) => {
     if (err) {
-      res.status(500).json({ error: 'Erreur lecture JSON' })
-    } else {
-      res.status(200).json(JSON.parse(data));
+      if (err.code === "ENOENT") {
+        // Fichier introuvable
+        return res.status(404).json({ error: "Fichier data.json introuvable" });
+      }
+      // Autre erreur
+      return res.status(500).json({ error: "Erreur lors de la lecture du JSON" });
+    }
+
+    try {
+      const produits = JSON.parse(data);
+      res.status(200).json(produits);
+    } catch (parseError) {
+      res.status(500).json({ error: "Erreur lors du parsing du JSON" });
     }
   });
 });
+
 //FIn dse routes
 
 
