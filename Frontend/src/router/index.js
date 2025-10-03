@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import AboutsComp from '@/components/AboutsComp.vue'
+import AboutsComp from '@/components/ProductComponent/AboutsComp.vue'
 import ContactComp from '@/components/ContactComp.vue'
 import HomeComp from '@/components/HomeComp.vue'
 import SignComp from '@/components/SignComp.vue'
