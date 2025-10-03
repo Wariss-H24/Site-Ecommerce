@@ -1,9 +1,10 @@
 const  express = require("express")
 const fs= require("fs")
-
+const cors = require("cors")
 const app = express()
  app.use(express.json())
 //On charge nos donnes depuis Env
+app.use(cors());
 require("dotenv").config()
 
 //Stoker le json dans une variable 
@@ -13,9 +14,10 @@ require("dotenv").config()
 app.get("/", (req,res)=>{
     res.send("BienVue Sur notre site E-commerce")
 })
+app.use(cors({ origin: "http://localhost:5174" }));
 
 app.get("/api/E-commerceProduits", (req, res) => {
-  fs.readFile('./datas/data.json', "utf-8", (err, data) => {
+  fs.readFile('./datas/data.json', (err, data) => {
     if (err) {
       if (err.code === "ENOENT") {
         // Fichier introuvable
