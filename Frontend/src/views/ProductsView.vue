@@ -1,4 +1,7 @@
 <script setup>
+import ProductComponent from '@/components/ProductComponent/ProductComponent.vue';
+
+
 
 
 </script>
@@ -6,7 +9,8 @@
 
 <template>
 
-<h1>Product</h1>
+<ProductComponent/>
+
 
 </template>
 
