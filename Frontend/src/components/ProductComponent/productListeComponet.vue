@@ -30,7 +30,12 @@ const produc= ref("product")
             <h1 class="text-base font-bold py-2">{{ product.title }}</h1>
             <!-- <p class="text-[#979da3] text-[14px] font-medium " >  {{ product.description }}</p> -->
             <div class="flex justify-between items-center ">
-                <div><h3 class="font-semibold mt-6">{{ product.price }}$</h3></div>
+                <h3 class="font-semibold mt-6">{{ product.price }}$</h3>
+                <div>
+                <RouterLink :to="{ name : 'ProductDetails', params : { id :product.id} }">
+                    Voir Details
+                </RouterLink>
+                </div>
             
             </div>
             <div  >

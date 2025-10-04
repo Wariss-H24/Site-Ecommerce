@@ -13,7 +13,6 @@ const URL ='http://localhost:4000/api/E-commerceProduits'
 function SeletCat(e) {
     emit("SendCategorie",e.target.textContent)
     // console.log(e.target.textContent)
-    
 }
 
 
