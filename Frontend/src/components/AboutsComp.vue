@@ -37,22 +37,22 @@ import FooterComp from '@/layout/footerComp.vue'
                 <span class=""></span>1950
                 <span class="span text-transparent">.....</span>1999
             </div>
-            <div class="pl-50 w-300 py-2">
-                <p class="">Lorem ipsum dolor sit amet, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis. consectetur adipiscing elit. Maecenas nibh dolor</p>
+            <div class="pl-30 w-300 py-2">
+                <p class="px-20">Lorem ipsum dolor sit amet, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis. consectetur adipiscing elit. Maecenas nibh dolor</p>
             </div>
             <div class="pl-50 w-300 py-2 text-[20px] font-semibold">
                 <span class=""></span>2000
                 <span class="span text-transparent">.....</span>2018
             </div>
-            <div class="pl-50 w-300 py-2">
-                <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis, et volutpat massa aliquam in. Curabitur sodales porttitor tortor sit amet malesuada.</p>
+            <div class="pl-30 w-300 py-2">
+                <p class="px-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis, et volutpat massa aliquam in. Curabitur sodales porttitor tortor sit amet malesuada.</p>
             </div>
         </div>
      </section>
 
     <!-- Team -->
     <section class="">
-      <div class="bg-white py-24 sm:py-32">
+      <div class="pl-30 bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
           <div class="max-w-3xl pb-8">
             <h2 class="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">

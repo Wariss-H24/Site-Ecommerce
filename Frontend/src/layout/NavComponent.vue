@@ -76,7 +76,7 @@
 
           <!-- Panier -->
           <div class="relative">
-            <!-- <button 
+            <button 
               @click="toggleCart"
               class="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-200 relative"
             >
@@ -84,10 +84,10 @@
               <span v-if="cartItemsCount > 0" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 {{ cartItemsCount }}
               </span>
-            </button> -->
+            </button>
 
             <!-- Panier déroulant -->
-            <!-- <div v-if="isCartOpen" class="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50">
+            <div v-if="isCartOpen" class="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50">
               <div class="p-4 border-b border-gray-200 dark:border-gray-700">
                 <div class="flex justify-between items-center">
                   <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Votre Panier</h3>
@@ -147,7 +147,7 @@
                   Commander
                 </button>
               </div>
-            </div> -->
+            </div>
           </div>
 
 
@@ -288,136 +288,136 @@
 </template>
 
 <script>
-export default {
-  name: 'Navbar',
-  data() {
-    return {
-      isScrolled: false,
-      isMobileMenuOpen: false,
-      isMobileSearchOpen: false,
-      isSearchFocused: false,
-      isCartOpen: false,
-      isProfileMenuOpen: false,
-      searchQuery: '',
-      cartItems: [
-        {
-          id: 1,
-          name: 'Produit Exemple',
-          price: 29.99,
-          quantity: 1,
-          image: 'https://via.placeholder.com/50'
-        }
-      ],
-      user: {
-        name: 'Frymce',
-        email: 'frymce@email.com'
-      }
-    }
-  },
-  computed: {
-    cartItemsCount() {
-      return this.cartItems.reduce((total, item) => total + item.quantity, 0)
-    },
-    cartTotal() {
-      return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)
-    }
-  },
-  mounted() {
-    this.handleScroll()
-    window.addEventListener('scroll', this.handleScroll)
-    document.addEventListener('click', this.handleClickOutside)
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
-    document.removeEventListener('click', this.handleClickOutside)
-  },
-  methods: {
-    handleScroll() {
-      this.isScrolled = window.scrollY > 10
-    },
+// export default {
+//   name: 'Navbar',
+//   data() {
+//     return {
+//       isScrolled: false,
+//       isMobileMenuOpen: false,
+//       isMobileSearchOpen: false,
+//       isSearchFocused: false,
+//       isCartOpen: false,
+//       isProfileMenuOpen: false,
+//       searchQuery: '',
+//       cartItems: [
+//         {
+//           id: 1,
+//           name: 'Produit Exemple',
+//           price: 29.99,
+//           quantity: 1,
+//           image: 'https://via.placeholder.com/50'
+//         }
+//       ],
+//       user: {
+//         name: 'Frymce',
+//         email: 'frymce@email.com'
+//       }
+//     }
+//   },
+//   computed: {
+//     cartItemsCount() {
+//       return this.cartItems.reduce((total, item) => total + item.quantity, 0)
+//     },
+//     cartTotal() {
+//       return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)
+//     }
+//   },
+//   mounted() {
+//     this.handleScroll()
+//     window.addEventListener('scroll', this.handleScroll)
+//     document.addEventListener('click', this.handleClickOutside)
+//   },
+//   beforeUnmount() {
+//     window.removeEventListener('scroll', this.handleScroll)
+//     document.removeEventListener('click', this.handleClickOutside)
+//   },
+//   methods: {
+//     handleScroll() {
+//       this.isScrolled = window.scrollY > 10
+//     },
     
-    toggleMobileMenu() {
-      this.isMobileMenuOpen = !this.isMobileMenuOpen
-      if (this.isMobileMenuOpen) {
-        this.isMobileSearchOpen = false
-      }
-    },
+//     toggleMobileMenu() {
+//       this.isMobileMenuOpen = !this.isMobileMenuOpen
+//       if (this.isMobileMenuOpen) {
+//         this.isMobileSearchOpen = false
+//       }
+//     },
     
-    closeMobileMenu() {
-      this.isMobileMenuOpen = false
-    },
+//     closeMobileMenu() {
+//       this.isMobileMenuOpen = false
+//     },
     
-    toggleMobileSearch() {
-      this.isMobileSearchOpen = !this.isMobileSearchOpen
-      if (this.isMobileSearchOpen) {
-        this.isMobileMenuOpen = false
-      }
-    },
+//     toggleMobileSearch() {
+//       this.isMobileSearchOpen = !this.isMobileSearchOpen
+//       if (this.isMobileSearchOpen) {
+//         this.isMobileMenuOpen = false
+//       }
+//     },
     
-    performSearch() {
-      if (this.searchQuery.trim()) {
-        this.$router.push(`/search?q=${encodeURIComponent(this.searchQuery)}`)
-        this.searchQuery = ''
-        this.isMobileSearchOpen = false
-      }
-    },
+//     performSearch() {
+//       if (this.searchQuery.trim()) {
+//         this.$router.push(`/search?q=${encodeURIComponent(this.searchQuery)}`)
+//         this.searchQuery = ''
+//         this.isMobileSearchOpen = false
+//       }
+//     },
     
-    toggleCart() {
-      this.isCartOpen = !this.isCartOpen
-      if (this.isCartOpen) {
-        this.isProfileMenuOpen = false
-      }
-    },
+//     toggleCart() {
+//       this.isCartOpen = !this.isCartOpen
+//       if (this.isCartOpen) {
+//         this.isProfileMenuOpen = false
+//       }
+//     },
     
-    closeCart() {
-      this.isCartOpen = false
-    },
+//     closeCart() {
+//       this.isCartOpen = false
+//     },
     
-    toggleProfileMenu() {
-      this.isProfileMenuOpen = !this.isProfileMenuOpen
-      if (this.isProfileMenuOpen) {
-        this.isCartOpen = false
-      }
-    },
+//     toggleProfileMenu() {
+//       this.isProfileMenuOpen = !this.isProfileMenuOpen
+//       if (this.isProfileMenuOpen) {
+//         this.isCartOpen = false
+//       }
+//     },
     
-    closeProfileMenu() {
-      this.isProfileMenuOpen = false
-    },
+//     closeProfileMenu() {
+//       this.isProfileMenuOpen = false
+//     },
     
-    increaseQuantity(itemId) {
-      const item = this.cartItems.find(item => item.id === itemId)
-      if (item) {
-        item.quantity++
-      }
-    },
+//     increaseQuantity(itemId) {
+//       const item = this.cartItems.find(item => item.id === itemId)
+//       if (item) {
+//         item.quantity++
+//       }
+//     },
     
-    decreaseQuantity(itemId) {
-      const item = this.cartItems.find(item => item.id === itemId)
-      if (item && item.quantity > 1) {
-        item.quantity--
-      } else {
-        this.cartItems = this.cartItems.filter(item => item.id !== itemId)
-      }
-    },
+//     decreaseQuantity(itemId) {
+//       const item = this.cartItems.find(item => item.id === itemId)
+//       if (item && item.quantity > 1) {
+//         item.quantity--
+//       } else {
+//         this.cartItems = this.cartItems.filter(item => item.id !== itemId)
+//       }
+//     },
     
-    goToCheckout() {
-      this.$router.push('/checkout')
-      this.closeCart()
-    },
+//     goToCheckout() {
+//       this.$router.push('/checkout')
+//       this.closeCart()
+//     },
     
-    logout() {
-      console.log('Déconnexion...')
-      this.closeProfileMenu()
-    },
+//     logout() {
+//       console.log('Déconnexion...')
+//       this.closeProfileMenu()
+//     },
     
-    handleClickOutside(event) {
-      if (!event.target.closest('.relative')) {
-        this.isCartOpen = false
-        this.isProfileMenuOpen = false
-      }
-    }
-  }
-}
+//     handleClickOutside(event) {
+//       if (!event.target.closest('.relative')) {
+//         this.isCartOpen = false
+//         this.isProfileMenuOpen = false
+//       }
+//     }
+//   }
+// }
 </script>
 
 <style scoped>

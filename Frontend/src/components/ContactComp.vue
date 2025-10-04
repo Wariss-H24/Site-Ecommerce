@@ -4,14 +4,14 @@ import FooterComp from '@/layout/footerComp.vue'
 
 <template>
   <div class="">
-    <section class="image text-gray-600 pt-10 relative">
+    <section class="image h-100 text-gray-600 pt-10 relative">
       <div class="grid justify-center items-center p-5">
         <div class="">
-            <h1 class="text-[60px]">Contact us Now !</h1>
+            <h1 class="text-[70px]">Contact us Now !</h1>
         </div>
         <div class="flex gap-3 px-30">
-            <router-link to="/home" class="border-r px-3 font-semibold hover:text-yellow-500">Home</router-link>
-            <router-link to="/contact" class="font-semibold hover:text-yellow-500">Contact-Us</router-link>
+            <router-link to="/home" class="border-r px-3 font-semibold hover:text-yellow-500 text-[30px]">Home</router-link>
+            <router-link to="/contact" class="font-semibold hover:text-yellow-500 text-[30px]">Contact-Us</router-link>
         </div>
       </div>
     </section>
