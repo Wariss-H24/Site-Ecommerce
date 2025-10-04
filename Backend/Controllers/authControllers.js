@@ -20,9 +20,7 @@ const register = async(req,res) =>{
       if (!email || !password) return res.status(400).json({ message: 'Champs manquants' });
 
       const Controllerdb = readDB()
-
       //Faire un find sur notre json
-
        const userExistant = Controllerdb.users.find(u => u.email === email);
   if (userExistant) return res.status(400).json({ message: 'Email déjà utilisé' });
 
