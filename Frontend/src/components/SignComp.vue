@@ -1,20 +1,9 @@
-<script setup>
-
-
-
-</script>
-
+<script setup></script>
 
 <template>
-
-<div class="">
- <router-view />
-</div>
-
+  <div class="">
+    <router-view />
+  </div>
 </template>
 
-
-<style scoped>
-
-
-</style>
+<style scoped></style>

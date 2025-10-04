@@ -42,7 +42,7 @@ const router = createRouter({
       component: SignComp,
       children: [
         {
-          path: '',
+          path: '/signup',
           name: 'signUp',
           component: SignUpComp,
         },

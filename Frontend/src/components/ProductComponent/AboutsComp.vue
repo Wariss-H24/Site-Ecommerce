@@ -18,41 +18,50 @@ import FooterComp from '@/layout/footerComp.vue'
       </div>
     </section>
 
-
     <!-- History -->
-     <section class="p-5 px-40">
-        <div class="">
-            <h1 class="pl-50 text-[25px] font-[100px]">
-                A Brief History of the 
-            </h1>
-            <p class="pl-50 w-300 py-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis, et volutpat massa aliquam in. Curabitur sodales porttitor tortor sit amet malesuada.
-            </p>
-            <p class="pl-50 w-300 py-6">
-                Consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis, et volutpat massa aliquam in. Curabitur sodales porttitor tortor sit amet malesuada
-            </p>
+    <section class="p-5 px-40">
+      <div class="">
+        <h1 class="pl-50 text-[25px] font-[100px]">A Brief History of the</h1>
+        <p class="pl-50 w-300 py-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur
+          eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc
+          consectetur scelerisque felis, et volutpat massa aliquam in. Curabitur sodales porttitor
+          tortor sit amet malesuada.
+        </p>
+        <p class="pl-50 w-300 py-6">
+          Consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed
+          sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis, et
+          volutpat massa aliquam in. Curabitur sodales porttitor tortor sit amet malesuada
+        </p>
+      </div>
+      <div class="pl-20">
+        <div class="pl-50 w-300 text-[20px] font-semibold">
+          <span class=""></span>1950 <span class="span text-transparent">.....</span>1999
         </div>
-        <div class="pl-20 ">
-            <div class="pl-50 w-300 text-[20px] font-semibold">
-                <span class=""></span>1950
-                <span class="span text-transparent">.....</span>1999
-            </div>
-            <div class="pl-50 w-300 py-2">
-                <p class="">Lorem ipsum dolor sit amet, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis. consectetur adipiscing elit. Maecenas nibh dolor</p>
-            </div>
-            <div class="pl-50 w-300 py-2 text-[20px] font-semibold">
-                <span class=""></span>2000
-                <span class="span text-transparent">.....</span>2018
-            </div>
-            <div class="pl-50 w-300 py-2">
-                <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc consectetur scelerisque felis, et volutpat massa aliquam in. Curabitur sodales porttitor tortor sit amet malesuada.</p>
-            </div>
+        <div class="pl-30 w-300 py-2">
+          <p class="px-20">
+            Lorem ipsum dolor sit amet, efficitur eget pharetra ac, cursus sed sapien. Cras posuere
+            ligula ut blandit varius. Nunc consectetur scelerisque felis. consectetur adipiscing
+            elit. Maecenas nibh dolor
+          </p>
         </div>
-     </section>
+        <div class="pl-50 w-300 py-2 text-[20px] font-semibold">
+          <span class=""></span>2000 <span class="span text-transparent">.....</span>2018
+        </div>
+        <div class="pl-30 w-300 py-2">
+          <p class="px-20">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur
+            eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. Nunc
+            consectetur scelerisque felis, et volutpat massa aliquam in. Curabitur sodales porttitor
+            tortor sit amet malesuada.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- Team -->
     <section class="">
-      <div class="bg-white py-24 sm:py-32">
+      <div class="pl-30 bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
           <div class="max-w-3xl pb-8">
             <h2 class="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
@@ -90,7 +99,7 @@ import FooterComp from '@/layout/footerComp.vue'
                   <h3 class="text-base/7 font-semibold tracking-tight text-gray-900">
                     Michael Foster
                   </h3>
-                  <p class="text-sm/6 font-semibold text-indigo-600">Co-Founder / Doctor G </p>
+                  <p class="text-sm/6 font-semibold text-indigo-600">Co-Founder / Doctor G</p>
                 </div>
               </div>
             </li>
@@ -164,8 +173,8 @@ import FooterComp from '@/layout/footerComp.vue'
 </template>
 
 <style scoped>
-.span{
-    width: 20px;
-    border-bottom: 2px solid black;
+.span {
+  width: 20px;
+  border-bottom: 2px solid black;
 }
 </style>

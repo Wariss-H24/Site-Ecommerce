@@ -4,14 +4,20 @@ import FooterComp from '@/layout/footerComp.vue'
 
 <template>
   <div class="">
-    <section class="image text-gray-600 pt-10 relative">
+    <section class="image h-100 text-gray-600 pt-10 relative">
       <div class="grid justify-center items-center p-5">
         <div class="">
-            <h1 class="text-[60px]">Contact us Now !</h1>
+          <h1 class="text-[70px]">Contact us Now !</h1>
         </div>
         <div class="flex gap-3 px-30">
-            <router-link to="/home" class="border-r px-3 font-semibold hover:text-yellow-500">Home</router-link>
-            <router-link to="/contact" class="font-semibold hover:text-yellow-500">Contact-Us</router-link>
+          <router-link
+            to="/home"
+            class="border-r px-3 font-semibold hover:text-yellow-500 text-[30px]"
+            >Home</router-link
+          >
+          <router-link to="/contact" class="font-semibold hover:text-yellow-500 text-[30px]"
+            >Contact-Us</router-link
+          >
         </div>
       </div>
     </section>
@@ -44,7 +50,7 @@ import FooterComp from '@/layout/footerComp.vue'
             </div>
             <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
               <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-              <a class="text-purple-500 leading-relaxed">example@email.com</a>
+              <a class="text-[var(--couleur-hover)] leading-relaxed">example@email.com</a>
               <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">
                 PHONE
               </h2>
@@ -61,22 +67,22 @@ import FooterComp from '@/layout/footerComp.vue'
           </p>
           <div class="relative mb-4 flex gap-3">
             <div>
-                <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
+              <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
             </div>
             <div>
-                <label for="name" class="leading-7 text-sm text-gray-600">Object</label>
-                <input
-                  type="text"
-                  id="object"
-                  name="object"
-                  class="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                />
+              <label for="name" class="leading-7 text-sm text-gray-600">Object</label>
+              <input
+                type="text"
+                id="object"
+                name="object"
+                class="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
             </div>
           </div>
           <div class="relative mb-4">
@@ -97,7 +103,7 @@ import FooterComp from '@/layout/footerComp.vue'
             ></textarea>
           </div>
           <button
-            class="text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded text-lg"
+            class="text-white bg-[var(--couleur-bgbtn)] border-0 py-2 px-6 focus:outline-none hover:bg-[var(--couleur-hover)] rounded text-lg"
           >
             Send Mail
           </button>
@@ -112,11 +118,9 @@ import FooterComp from '@/layout/footerComp.vue'
 </template>
 
 <style scoped>
-
-.image{
-    background-image: url('../asset/fr-supermarches-rayon-magasin.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+.image {
+  background-image: url('../asset/fr-supermarches-rayon-magasin.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
 </style>
