@@ -6,6 +6,7 @@ import SignComp from '@/components/SignComp.vue'
 import ProductsView from '@/views/ProductsView.vue'
 import SignUpComp from '@/components/SignUpComp.vue'
 import RegisterComp from '@/components/RegisterComp.vue'
+import ProductDetaills from '@/views/ProductDetaills.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,6 +30,11 @@ const router = createRouter({
       path: '/product',
       name: 'product',
       component: ProductsView,
+    },
+    {
+      path: '/product/:id',
+      name: 'ProductDetails',
+      component: ProductDetaills,
     },
     {
       path: '/sign',
