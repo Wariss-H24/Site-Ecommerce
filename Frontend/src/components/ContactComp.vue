@@ -44,7 +44,7 @@ import FooterComp from '@/layout/footerComp.vue'
             </div>
             <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
               <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-              <a class="text-purple-500 leading-relaxed">example@email.com</a>
+              <a class="text-[var(--couleur-hover)] leading-relaxed">example@email.com</a>
               <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">
                 PHONE
               </h2>
@@ -97,7 +97,7 @@ import FooterComp from '@/layout/footerComp.vue'
             ></textarea>
           </div>
           <button
-            class="text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded text-lg"
+            class="text-white bg-[var(--couleur-bgbtn)] border-0 py-2 px-6 focus:outline-none hover:bg-[var(--couleur-hover)] rounded text-lg"
           >
             Send Mail
           </button>

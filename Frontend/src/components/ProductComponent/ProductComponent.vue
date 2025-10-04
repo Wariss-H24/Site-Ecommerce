@@ -3,10 +3,10 @@ import { computed, onMounted, ref } from 'vue';
 import ProductListeComponet from './productListeComponet.vue';
 import ProductCategorie from '@/views/ProductCategorie.vue';
 
-const uniqueCategories =([])
+
 const fetchEL = ref([])
 let category = ref()
-const Categorise =ref([])
+
 
 const URL ='http://localhost:4000/api/E-commerceProduits'
 

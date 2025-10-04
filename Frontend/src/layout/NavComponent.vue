@@ -3,12 +3,12 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
-        <div class="flex-shrink-0 flex items-center">
+        <div class="relative left-[-140px] flex-shrink-0 flex items-center">
           <router-link to="/" class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+            <div class="w-10 h-10 bg-gradient-to-r from-[var(--couleur-hover)] to-[var(--couleur-bgbtn)] rounded-lg flex items-center justify-center">
               <i class="fas fa-store text-white text-lg"></i>
             </div>
-            <span class="text-xl font-bold text-gray-800 dark:text-white"> E-Com</span>
+            <span class="text-3xl font-bold text-gray-800 dark:text-white"> <span class="text-[var(--couleur-hover)]">E-</span>Com</span>
           </router-link>
         </div>
 
@@ -16,14 +16,14 @@
         <div class="hidden md:flex items-center space-x-8">
           <router-link 
             to="/" 
-            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            class="nav-link text-gray-700 dark:text-gray-300 hover:text-[var(--couleur-hover)] dark:hover:text-[var(--couleur-hover)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
           >
             <i class="fas fa-home mr-2"></i>
             Accueil
           </router-link>
           <router-link 
             to="/product" 
-            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            class="nav-link text-gray-700 dark:text-gray-300 hover:text-[var(--couleur-hover)] dark:hover:text-[var(--couleur-hover)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
           >
             
             Product
@@ -50,7 +50,7 @@
         <div>
                     <router-link 
             to="/about" 
-            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            class="nav-link text-gray-700 dark:text-gray-300 hover:text-[var(--couleur-hover)] dark:hover:text-[var(--couleur-hover)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
           >
             <i class="fas fa-info-circle mr-2"></i>
             Abouts
@@ -58,7 +58,7 @@
           
           <router-link 
             to="/contact" 
-            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+            class="nav-link text-gray-700 dark:text-gray-300 hover:text-[var(--couleur-hover)] dark:hover:text-[var(--couleur-hover)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
           >
             <i class="fas fa-envelope mr-2"></i>
             Contact
@@ -85,7 +85,6 @@
                 {{ cartItemsCount }}
               </span>
             </button>
-
             <!-- Panier déroulant -->
             <div v-if="isCartOpen" class="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-50">
               <div class="p-4 border-b border-gray-200 dark:border-gray-700">
@@ -287,7 +286,7 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 // export default {
 //   name: 'Navbar',
 //   data() {
@@ -418,7 +417,133 @@
 //     }
 //   }
 // }
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+// State
+const isScrolled = ref(false)
+const isMobileMenuOpen = ref(false)
+const isMobileSearchOpen = ref(false)
+const isSearchFocused = ref(false)
+const isCartOpen = ref(false)
+const isProfileMenuOpen = ref(false)
+const searchQuery = ref('')
+
+const cartItems = ref([
+  {
+    id: 1,
+    name: 'Kiss',
+    price: 29.99,
+    quantity: 1,
+    image: 'https://via.placeholder.com/50'
+  }
+])
+
+const user = ref({
+  name: 'Frymce',
+  email: 'frymce@email.com'
+})
+
+// Computed
+const cartItemsCount = computed(() =>
+  cartItems.value.reduce((total, item) => total + item.quantity, 0)
+)
+
+const cartTotal = computed(() =>
+  cartItems.value.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)
+)
+
+// Methods
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 10
+}
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+  if (isMobileMenuOpen.value) isMobileSearchOpen.value = false
+}
+
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
+}
+
+const toggleMobileSearch = () => {
+  isMobileSearchOpen.value = !isMobileSearchOpen.value
+  if (isMobileSearchOpen.value) isMobileMenuOpen.value = false
+}
+
+const performSearch = () => {
+  if (searchQuery.value.trim()) {
+    router.push(`/search?q=${encodeURIComponent(searchQuery.value)}`)
+    searchQuery.value = ''
+    isMobileSearchOpen.value = false
+  }
+}
+
+const toggleCart = () => {
+  isCartOpen.value = !isCartOpen.value
+  if (isCartOpen.value) isProfileMenuOpen.value = false
+}
+
+const closeCart = () => {
+  isCartOpen.value = false
+}
+
+const toggleProfileMenu = () => {
+  isProfileMenuOpen.value = !isProfileMenuOpen.value
+  if (isProfileMenuOpen.value) isCartOpen.value = false
+}
+
+const closeProfileMenu = () => {
+  isProfileMenuOpen.value = false
+}
+
+const increaseQuantity = (itemId) => {
+  const item = cartItems.value.find(item => item.id === itemId)
+  if (item) item.quantity++
+}
+
+const decreaseQuantity = (itemId) => {
+  const item = cartItems.value.find(item => item.id === itemId)
+  if (item && item.quantity > 1) {
+    item.quantity--
+  } else {
+    cartItems.value = cartItems.value.filter(item => item.id !== itemId)
+  }
+}
+
+const goToCheckout = () => {
+  router.push('/checkout')
+  closeCart()
+}
+
+const logout = () => {
+  console.log('Déconnexion...')
+  closeProfileMenu()
+}
+
+const handleClickOutside = (event) => {
+  if (!event.target.closest('.relative')) {
+    isCartOpen.value = false
+    isProfileMenuOpen.value = false
+  }
+}
+
+// Lifecycle
+onMounted(() => {
+  handleScroll()
+  window.addEventListener('scroll', handleScroll)
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll)
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>
+
 
 <style scoped>
 /* Styles spécifiques supplémentaires si nécessaire */
@@ -434,7 +559,7 @@
   height: 2px;
   bottom: 0;
   left: 50%;
-  background-color: #3b82f6;
+  background-color: var(--couleur-hover);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
