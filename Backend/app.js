@@ -14,7 +14,12 @@ require("dotenv").config()
 app.get("/", (req,res)=>{
     res.send("BienVue Sur notre site E-commerce")
 })
-app.use(cors({ origin: "http://localhost:5174" }));
+
+app.use(cors({
+  origin: 'http://localhost:5174',
+  methods: ['GET', 'POST', 'PUT'], // ← ici tu précises ce que tu acceptes
+  allowedHeaders: ['Content-Type', 'Authorization']
+}))
 
 app.get("/api/E-commerceProduits", (req, res) => {
   fs.readFile('./datas/data.json', (err, data) => {
