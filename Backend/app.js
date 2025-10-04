@@ -36,6 +36,29 @@ app.get("/api/E-commerceProduits", (req, res) => {
   });
 });
 
+app.get("/api/E-commerceProduits/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  fs.readFile('./datas/data.json', 'utf-8', (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "Erreur lecture JSON" });
+    }
+
+    try {
+      const produits = JSON.parse(data).products;
+      const produit = produits.find(p => p.id === id);
+
+      if (!produit) {
+        return res.status(404).json({ error: "Produit non trouvé" });
+      }
+
+      res.status(200).json(produit);
+    } catch (parseError) {
+      res.status(500).json({ error: "Erreur parsing JSON" });
+    }
+  });
+});
+
+
 //FIn dse routes
 
 
