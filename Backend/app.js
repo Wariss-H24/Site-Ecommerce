@@ -38,7 +38,7 @@ app.get("/api/E-commerceProduits", (req, res) => {
 
 app.get("/api/E-commerceProduits/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  fs.readFile('./datas/data.json', 'utf-8', (err, data) => {
+  fs.readFile('./datas/data.json', (err, data) => {
     if (err) {
       return res.status(500).json({ error: "Erreur lecture JSON" });
     }
