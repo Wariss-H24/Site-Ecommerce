@@ -48,7 +48,7 @@ const register = async(req,res) =>{
     subject: 'Vérification de votre compte',
     text: `Bonjour ${email},\n\nVoici votre code de vérification : ${otp}\nCe code expire dans 5 minutes.\n\nMerci !`
   };
-
+  console.log("Envoi de l'email à :", email, "avec OTP :", otp);
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) console.log(err);
     else console.log('Email envoyé : ' + info.response);

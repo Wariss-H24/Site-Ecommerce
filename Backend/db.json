@@ -2,10 +2,10 @@
   "users": [
     {
       "email": "badawariss434@gmail.com",
-      "password": "$2b$10$VQUF7RpNp1LebKGhXIX8oeTE2nufLNZenU00uXp70sSRQEJ5qY34.",
+      "password": "$2b$10$GkyaAzXg2zgQPNrPtCNiB.Tsj2vv.TeCNxgzFu7IvlulVNwdBA6re",
       "isVerified": false,
-      "otp": "925300",
-      "otpExpires": "2025-10-06T04:39:45.295Z"
+      "otp": "770174",
+      "otpExpires": "2025-10-06T06:01:15.087Z"
     }
   ]
 }
