@@ -3,22 +3,10 @@ import { ref, onMounted } from 'vue'
 const props = defineProps({
   type: Array,
 })
-const emit = defineEmits(['add'])
+
 
 const produc = ref('product')
 
-function addCard() {
-  const product = ref([
-    {
-      id: product.id,
-      name: product.title,
-      price: product.price,
-      quantity: 1,
-      image: '',
-    },
-  ])
-  emit('add', product)
-}
 </script>
 
 <template>

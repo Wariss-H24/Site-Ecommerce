@@ -42,7 +42,7 @@ onMounted(async()=>{
     <div class="w-[200px] h-60 pl-[30px] bg-[#ffffff] ml-10" >
         <h4 class=" w-35 pb-[5px] font-bold text-[15px] mt-1 pt-3">My Categorise</h4>
         <div class="pt-2" v-for="categorie in UniqueCategory" :key="categorie.id" >
-            <div class="" @click="SeletCat">
+            <div class="" @click="SeletCat()">
                 <p class="font-semibold my-[8px] capitalize">{{ categorie }}</p>
             </div>
         </div>
