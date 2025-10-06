@@ -12,10 +12,11 @@ const confirmPassword =ref('')
 const handleRegister = async (e)=> {
   e.preventDefault()
 
-  if(password.value != confirmPassword) {
-     alert('Les mots de passe ne correspondent pas');
-    return;
-  }
+if (password.value.trim() !== confirmPassword.value.trim()) {
+  alert("Les mots de passe ne correspondent pas !");
+  return;
+}
+
 
   //Je veux fetcher mon API cree pour l'inscription
 
@@ -139,8 +140,7 @@ const handleRegister = async (e)=> {
                 <i class="fas fa-lock mr-2"></i>Confirmer le mot de passe
               </label>
               <div class="relative">
-                <input v-model="confirmPassword"
-                  type="password"
+                <input type="password" v-model="confirmPassword"
                   required
                   class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 dark:bg-gray-700 dark:text-white transition-colors pr-12"
                   placeholder="Confirmez votre mot de passe"
