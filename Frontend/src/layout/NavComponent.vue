@@ -177,7 +177,7 @@
           <!-- Connexion -->
           <div class="">
             <router-link
-              to="/sign"
+              to="/signUp"
               class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
             >
               <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">

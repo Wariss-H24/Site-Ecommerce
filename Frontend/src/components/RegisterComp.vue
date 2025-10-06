@@ -16,11 +16,6 @@ const handleRegister = async (e)=> {
      alert('Les mots de passe ne correspondent pas');
     return;
   }
-if (password.value.trim() !== confirmPassword.value.trim()) {
-  alert("Les mots de passe ne correspondent pas !");
-  return;
-}
-
 
   //Je veux fetcher mon API cree pour l'inscription
 
@@ -35,8 +30,6 @@ if (password.value.trim() !== confirmPassword.value.trim()) {
       // confirmPassword : confirmPassword.value
     })
   });
-
-  const data = await resp.json();
 
   if(resp.ok){
         alert('Inscription réussie ! Vérifiez votre email.');

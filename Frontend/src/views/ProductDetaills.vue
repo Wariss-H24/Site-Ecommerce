@@ -8,26 +8,28 @@ const URL = 'http://localhost:4000/api/E-commerceProduits'
 
 onMounted(async () => {
 
+  const token = localStorage.getItem('token') // on récupère le token
+if (!token) {
+ console.error("Aucun token trouvé. Redirection vers login.")
+ // si pas connecté → redirection
+ router.push('/signup')
+ return
+}
   try {
-       const token = localStorage.getItem('token') // 🔹 on récupère le token
-   if (!token) {
-      console.error("Aucun token trouvé. Redirection vers login.")
-      // si pas connecté → redirection
-      router.push('/signup')
-      return
-    }
     // On récupère un produit par son id
     const resp = await fetch(`${URL}/${route.params.id}`,{
-      headers : {
-        //ajout du token 
+      headers : {//ajout du token 
         'Authorization' : `Bearer ${token}`
       }
     })
-    //SI la resp nes pas ok alor...
-    if (!resp.ok) {
-      throw new Error("Accès refusé ou produit introuvable")
+    if (resp.status === 401 || resp.status === 403) {
+      // Token invalide ou expiré
+      localStorage.removeItem('token');
+      router.push('/signup');
+      return;
     }
-  
+    //SI la resp nes pas ok alor...
+    if (!resp.ok) {throw new Error("Accès refusé ou produit introuvable")}
     const data = await resp.json()
     Uniqueproduct.value = data
     console.log('Produit récupéré :', Uniqueproduct.value)

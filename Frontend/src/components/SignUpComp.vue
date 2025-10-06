@@ -17,11 +17,11 @@ const handleLogin =async (e) =>{
 
    const data = await resp.json();
 
-    if (resp.ok && data.token) {
-    localStorage.setItem('token', data.token);
-    // redirection vers la page produits
-    router.push(`/product/${id}`); 
-  } else {
+if (resp.ok && data.token) {
+  localStorage.setItem('token', data.token);
+  const userId = data.user.id;
+  router.push(`/product/${userId}`);
+}else {
     alert(data.message);
   }
 }
