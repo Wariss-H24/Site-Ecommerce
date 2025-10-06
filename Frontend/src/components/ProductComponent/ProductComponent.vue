@@ -46,7 +46,7 @@ const getCategorie= computed(()=>{
 
 <template>
  <ProductCategorie :tab="fetchEL" @SendCategorie="ReceiveCategorie"/>
-<ProductListeComponet :type="getCategorie"/>
+ <ProductListeComponet :type="getCategorie"/>
 
 </template>
 
