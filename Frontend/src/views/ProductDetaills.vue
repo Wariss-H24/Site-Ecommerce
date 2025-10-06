@@ -1,55 +1,76 @@
 <script setup>
-import { ref, onMounted } from "vue"
-import { useRoute,useRouter } from "vue-router"
-const router =useRouter()
-const route = useRoute()              // Permet de récupérer l'ID passé dans l'URL
-const Uniqueproduct = ref(null)             // Stockera le produit
-const URL ="http://localhost:4000/api/E-commerceProduits"
+import { ref, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+const router = useRouter()
+const route = useRoute() // Permet de récupérer l'ID passé dans l'URL
+const Uniqueproduct = ref(null) // Stockera le produit
+const URL = 'http://localhost:4000/api/E-commerceProduits'
 
 onMounted(async () => {
+
   try {
-    const resp = await fetch(`${URL}/${route.params.id}`) // On récupère un produit par son id
+       const token = localStorage.getItem('token') // 🔹 on récupère le token
+   if (!token) {
+      console.error("Aucun token trouvé. Redirection vers login.")
+      // si pas connecté → redirection
+      router.push('/signup')
+      return
+    }
+    // On récupère un produit par son id
+    const resp = await fetch(`${URL}/${route.params.id}`,{
+      headers : {
+        //ajout du token 
+        'Authorization' : `Bearer ${token}`
+      }
+    })
+    //SI la resp nes pas ok alor...
+    if (!resp.ok) {
+      throw new Error("Accès refusé ou produit introuvable")
+    }
+  
     const data = await resp.json()
     Uniqueproduct.value = data
-    console.log("Produit récupéré :", Uniqueproduct.value)
+    console.log('Produit récupéré :', Uniqueproduct.value)
   } catch (error) {
-    console.error("Erreur fetch:", error)
+    console.error('Erreur fetch:', error)
   }
 })
 
-
 function Details() {
-    router.push({ name : "product" })
+  router.push({ name: 'product' })
 }
 </script>
 
-
 <template>
   <section class="py-8 md:py-16 dark:bg-gray-900 antialiased">
-    <div v-if="Uniqueproduct" class="bg-white rounded-[20px] shadow p-6 h-[500px] max-w-screen-xl px-4 mx-auto 2xl:px-0">
+    <div
+      v-if="Uniqueproduct"
+      class="bg-white rounded-[20px] shadow p-6 h-[500px] max-w-screen-xl px-4 mx-auto 2xl:px-0"
+    >
       <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
         <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
           <img class="w-full" :src="Uniqueproduct.thumbnail" alt="product" />
           <div class="flex">
-            <div class="w-20 " v-for="Image in Uniqueproduct.images" :key="Image.id">
-              <img class="" :src="Image" alt="">
+            <div class="w-20" v-for="Image in Uniqueproduct.images" :key="Image.id">
+              <img class="" :src="Image" alt="" />
             </div>
           </div>
           <div class="absolute left-90">
-            <button @click="Details" class="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Voir Produit</button>
+            <button
+              @click="Details"
+              class="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              Voir Produit
+            </button>
           </div>
         </div>
 
         <div class="mt-6 sm:mt-8 lg:mt-0">
-          <h1
-            class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white"
-          >
-           {{ Uniqueproduct.title }}
+          <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
+            {{ Uniqueproduct.title }}
           </h1>
           <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
-            <p
-              class="text-2xl font-extrabold text-gray-900 sm:text-3xl dark:text-white"
-            >
+            <p class="text-2xl font-extrabold text-gray-900 sm:text-3xl dark:text-white">
               ${{ Uniqueproduct.price }}
             </p>
 
@@ -121,11 +142,7 @@ function Details() {
                   />
                 </svg>
               </div>
-              <p
-                class="text-sm font-medium leading-none text-gray-500 dark:text-gray-400"
-              >
-                (5.0)
-              </p>
+              <p class="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">(5.0)</p>
               <a
                 href="#"
                 class="text-sm font-medium leading-none text-gray-900 underline hover:no-underline dark:text-white"
@@ -165,7 +182,7 @@ function Details() {
             <a
               href="#"
               title=""
-              class="text-white mt-4 sm:mt-0 bg-[var(--couleur-bgbtn)] hover:bg-[var(--couleur-hover)]  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
+              class="text-white mt-4 sm:mt-0 bg-[var(--couleur-bgbtn)] hover:bg-[var(--couleur-hover)] font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
               role="button"
             >
               <svg
@@ -193,7 +210,7 @@ function Details() {
           <hr class="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
 
           <p class="mb-6 text-gray-500 dark:text-gray-400">
-           {{ Uniqueproduct.description }}
+            {{ Uniqueproduct.description }}
           </p>
         </div>
       </div>
@@ -201,8 +218,4 @@ function Details() {
   </section>
 </template>
 
-
-<style scoped>
-
-
-</style>
+<style scoped></style>

@@ -7,8 +7,22 @@ const app = express()
 app.use(cors());
 require("dotenv").config()
 
-//Stoker le json dans une variable 
+//On convertis tt ce qui vien du front en JSO
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.json());
+//importation du fichier dans routes
+const authRoutes = require('./routes/authRoutes');
+//importation du fichier authMiddleware
+const { authenticateToken } = require('./middlewears/authMiddleware');
+// Routes Auth
+app.use('/api/auth', authRoutes);
 
+
+
+// Exemple route protégée
+app.get('/api/dashboard', authenticateToken, (req, res) => {
+  res.json({ message: `Bienvenue ${req.user.email} sur le dashboard` });
+});
 
 //Definition des routes 
 app.get("/", (req,res)=>{
@@ -65,7 +79,6 @@ app.get("/api/E-commerceProduits/:id", (req, res) => {
 
 
 //FIn dse routes
-
 
 const hostman = "127.0.0.1"
 const port = process.env.PORT || 3000;

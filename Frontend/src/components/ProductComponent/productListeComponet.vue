@@ -4,8 +4,18 @@ const props = defineProps({
   type: Array,
 })
 
-
 const produc = ref('product')
+
+const emit = defineEmits(['addProduct'])
+
+function addCard() {
+    const card = ref({
+        name: product.title,
+        
+    })
+
+    emit('addProduct', card)
+}
 
 </script>
 

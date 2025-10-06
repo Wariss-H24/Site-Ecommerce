@@ -1,21 +1,9 @@
 <script setup>
-import ProductComponent from '@/components/ProductComponent/ProductComponent.vue';
-
-
-
-
+import ProductComponent from '@/components/ProductComponent/ProductComponent.vue'
 </script>
 
-
 <template>
-
-<ProductComponent/>
-
-
+  <ProductComponent />
 </template>
 
-
-<style scoped>
-
-
-</style>
+<style scoped></style>
