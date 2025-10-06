@@ -7,6 +7,7 @@ import ProductsView from '@/views/ProductsView.vue'
 import SignUpComp from '@/components/SignUpComp.vue'
 import RegisterComp from '@/components/RegisterComp.vue'
 import ProductDetaills from '@/views/ProductDetaills.vue'
+import VerifyCodeView from '@/views/VerifyCodeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,11 @@ const router = createRouter({
       path: '/product/:id',
       name: 'ProductDetails',
       component: ProductDetaills,
+    },
+    {
+      path: '/verify',
+      name: 'verify',
+      component: VerifyCodeView,
     },
     {
       path: '/sign',
