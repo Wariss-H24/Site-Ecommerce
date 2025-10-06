@@ -12,7 +12,7 @@ const confirmPassword =ref('')
 const handleRegister = async (e)=> {
   e.preventDefault()
 
-  if(password.value != confirmPassword) {
+  if(password.value.trim() !== confirmPassword.value.trim()) {
      alert('Les mots de passe ne correspondent pas');
     return;
   }
@@ -36,7 +36,8 @@ const handleRegister = async (e)=> {
   if(resp.ok){
         alert('Inscription réussie ! Vérifiez votre email.');
         // redirection vers la page de connexion
-        router.push('/signUp'); 
+        // router.push('/signUp'); 
+        router.push(`/verify?email=${encodeURIComponent(email.value)}`);
         // prenom.value = '';
         // nom.value = '';
         // email.value = '';
