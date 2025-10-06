@@ -32,24 +32,13 @@ const register = async(req,res) =>{
   const otpExpires = new Date(Date.now() + 5 * 60 * 1000); // expire dans 5 min
   
   const hashedPassword = await bcrypt.hash(password, 10)
-const newUser = {
-  id: Date.now().toString(), // 🆔 identifiant unique basé sur la date
-  email,
-  password: hashedPassword,
-  isVerified: false,
-  otp,
-  otpExpires
-};
-
-Controllerdb.users.push(newUser);
-writeDB(Controllerdb);
- trollerdb.users.push({
+  Controllerdb.users.push({
     email, 
     password: hashedPassword,
     isVerified: false,
     otp,
     otpExpires
-  }); Con
+  });
   writeDB(Controllerdb);
 
 
@@ -111,20 +100,9 @@ const login = async (req,res) =>{
  if (!user.isVerified)
     return res.status(400).json({ message: 'Veuillez vérifier votre compte avant de vous connecter.' });
 
-const token = jwt.sign(
-  { id: user.id, email: user.email },
-  process.env.SECRET,
-  { expiresIn: '1h' }
-);
+    const token = jwt.sign({email : user.email}, process.env.SECRET, { expiresIn: '1h' })
 
-// ✅ renvoie aussi l'id pour le frontend
-res.json({
-  token,
-  user: { id: user.id, email: user.email }
-});
-
-  
-
+    res.json({token})
 }
 
 module.exports = { register,verifyOTP, login };
