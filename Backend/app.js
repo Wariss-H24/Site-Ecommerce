@@ -31,7 +31,8 @@ app.get("/", (req,res)=>{
 
 app.use(cors({
   origin: 'http://localhost:5174',
-  methods: ['GET', 'POST', 'PUT'], // ← ici tu précises ce que tu acceptes
+  //Préciser ce que tu j'acceptes
+  methods: ['GET', 'POST', 'PUT'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
@@ -63,7 +64,7 @@ app.get("/api/E-commerceProduits/:id",authenticateToken, (req, res) => {
 
     try {
       const produits = JSON.parse(data).products;
-      const produit = produits.find(p => p.id === id);
+      const produit = produits.find(p => p.id === parseInt(req.params.id));
 
       if (!produit) {
         return res.status(404).json({ error: "Produit non trouvé" });

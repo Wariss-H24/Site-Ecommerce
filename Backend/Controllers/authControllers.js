@@ -18,12 +18,12 @@ const transporter = nodemailer.createTransport({
 const register = async(req,res) =>{
   try {
     const { email , password } =req.body
-      if (!email || !password) return res.status(400).json({ message: 'Champs manquants' });
+      if (!email || !password) return res.status(400).json({ message: 'Email et mot de passe requis.' });
 
-      const Controllerdb = readDB()
+      const Controllerdb = await readDB()
       //Faire un find sur notre json
        const userExistant = Controllerdb.users.find(u => u.email === email);
-  if (userExistant) return res.status(400).json({ message: 'Email déjà utilisé' });
+  if (userExistant) return res.status(400).json({ message: 'Cet utilisateur existe déjà. déjà utilisé' });
 
 
   
@@ -37,9 +37,10 @@ const register = async(req,res) =>{
     password: hashedPassword,
     isVerified: false,
     otp,
-    otpExpires
+    otpExpires,
+    // id: Date.now()
   });
-  writeDB(Controllerdb);
+   writeDB(Controllerdb);
 
 
 //Configurationd'envoi de mail
@@ -67,7 +68,7 @@ const register = async(req,res) =>{
 // ROUTE POUR VÉRIFIER LE CODE OTP
 const verifyOTP = async (req, res) => {
   const { email, otp } = req.body;
-  const Controllerdb = readDB();
+  const Controllerdb =await  readDB();
   const user = Controllerdb.users.find(u => u.email === email);
 
   if (!user) return res.status(400).json({ message: 'Utilisateur introuvable' });
@@ -100,9 +101,10 @@ const login = async (req,res) =>{
  if (!user.isVerified)
     return res.status(400).json({ message: 'Veuillez vérifier votre compte avant de vous connecter.' });
 
-    const token = jwt.sign({email : user.email}, process.env.SECRET, { expiresIn: '1h' })
+    const token = jwt.sign( {email : user.email}, process.env.SECRET, { expiresIn: '1h' })
 
-    res.json({token})
+    res.status(200).json({token});
+
 }
 
 module.exports = { register,verifyOTP, login };
