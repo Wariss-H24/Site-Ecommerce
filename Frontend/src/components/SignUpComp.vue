@@ -1,13 +1,15 @@
 <script setup>
- import { useRouter } from 'vue-router';
+ import { useRouter,useRoute } from 'vue-router';
  import { ref } from 'vue';
           
 const router = useRouter();
+const route = useRoute();
 const email = ref('');
 const password = ref('');
 
 const handleLogin =async (e) =>{
     e.preventDefault();
+    
 
      const resp= await fetch('http://localhost:4000/api/auth/login', {
     method: 'POST',
@@ -19,8 +21,8 @@ const handleLogin =async (e) =>{
 
 if (resp.ok && data.token) {
   localStorage.setItem('token', data.token);
-  const userId = data.user.id;
-  router.push(`/product/${userId}`);
+ 
+  router.push(`/product/`);
 }else {
     alert(data.message);
   }

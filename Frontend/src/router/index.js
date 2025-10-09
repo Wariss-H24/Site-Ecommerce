@@ -35,6 +35,7 @@ const router = createRouter({
     {
       path: '/product/:id',
       name: 'ProductDetails',
+      meta: { requiresAuth: true },
       component: ProductDetaills,
     },
     {
@@ -64,13 +65,15 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
-
-  if (to.name === 'product' && !token) {
+  // Si la route nécessite une authentification
+  if (to.meta.requiresAuth && !token) {
+ //redirection
     next('/signup');
   } else {
     next();
   }
 });
+
 
 
 export default router

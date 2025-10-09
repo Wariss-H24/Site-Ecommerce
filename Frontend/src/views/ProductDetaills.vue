@@ -22,13 +22,13 @@ if (!token) {
         'Authorization' : `Bearer ${token}`
       }
     })
+    //SI la resp nes pas ok alor...
     if (resp.status === 401 || resp.status === 403) {
       // Token invalide ou expiré
       localStorage.removeItem('token');
       router.push('/signup');
       return;
     }
-    //SI la resp nes pas ok alor...
     if (!resp.ok) {throw new Error("Accès refusé ou produit introuvable")}
     const data = await resp.json()
     Uniqueproduct.value = data

@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import ProductListeComponet from './productListeComponet.vue'
 import ProductCategorie from '@/views/ProductCategorie.vue'
+import FooterComp from '@/layout/footerComp.vue'
 
 const fetchEL = ref([])
 let category = ref()
@@ -41,6 +42,7 @@ const getCategorie = computed(() => {
 <template>
   <ProductCategorie :tab="fetchEL" @SendCategorie="ReceiveCategorie" />
   <ProductListeComponet :type="getCategorie" />
+  <FooterComp/>
 </template>
 
 <style scoped></style>

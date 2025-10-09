@@ -291,7 +291,7 @@
           <router-link
             to="/"
             @click="closeMobileMenu"
-            class="flex items-center space-x-3 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200"
+            class="flex items-center space-x-3 px-3 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200"
           >
             <i class="fas fa-home w-5"></i>
             <span>Accueil</span>
@@ -317,145 +317,38 @@
         </div>
       </div>
     </div>
+    
+    <button @click="handleLogout"  class="bg-[(--couleur-bgImage)] text-white px-4 py-2 rounded right-0 mt-2">
+      Déconnexion
+    </button>
   </nav>
+
 </template>
 
 <script setup>
-// export default {
-//   name: 'Navbar',
-//   data() {
-//     return {
-//       isScrolled: false,
-//       isMobileMenuOpen: false,
-//       isMobileSearchOpen: false,
-//       isSearchFocused: false,
-//       isCartOpen: false,
-//       isProfileMenuOpen: false,
-//       searchQuery: '',
-//       cartItems: [
-//         {
-//           id: 1,
-//           name: 'Produit Exemple',
-//           price: 29.99,
-//           quantity: 1,
-//           image: 'https://via.placeholder.com/50'
-//         }
-//       ],
-//       user: {
-//         name: 'Frymce',
-//         email: 'frymce@email.com'
-//       }
-//     }
-//   },
-//   computed: {
-//     cartItemsCount() {
-//       return this.cartItems.reduce((total, item) => total + item.quantity, 0)
-//     },
-//     cartTotal() {
-//       return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)
-//     }
-//   },
-//   mounted() {
-//     this.handleScroll()
-//     window.addEventListener('scroll', this.handleScroll)
-//     document.addEventListener('click', this.handleClickOutside)
-//   },
-//   beforeUnmount() {
-//     window.removeEventListener('scroll', this.handleScroll)
-//     document.removeEventListener('click', this.handleClickOutside)
-//   },
-//   methods: {
-//     handleScroll() {
-//       this.isScrolled = window.scrollY > 10
-//     },
 
-//     toggleMobileMenu() {
-//       this.isMobileMenuOpen = !this.isMobileMenuOpen
-//       if (this.isMobileMenuOpen) {
-//         this.isMobileSearchOpen = false
-//       }
-//     },
+const isLoggedIn = ref(true)
 
-//     closeMobileMenu() {
-//       this.isMobileMenuOpen = false
-//     },
-
-//     toggleMobileSearch() {
-//       this.isMobileSearchOpen = !this.isMobileSearchOpen
-//       if (this.isMobileSearchOpen) {
-//         this.isMobileMenuOpen = false
-//       }
-//     },
-
-//     performSearch() {
-//       if (this.searchQuery.trim()) {
-//         this.$router.push(`/search?q=${encodeURIComponent(this.searchQuery)}`)
-//         this.searchQuery = ''
-//         this.isMobileSearchOpen = false
-//       }
-//     },
-
-//     toggleCart() {
-//       this.isCartOpen = !this.isCartOpen
-//       if (this.isCartOpen) {
-//         this.isProfileMenuOpen = false
-//       }
-//     },
-
-//     closeCart() {
-//       this.isCartOpen = false
-//     },
-
-//     toggleProfileMenu() {
-//       this.isProfileMenuOpen = !this.isProfileMenuOpen
-//       if (this.isProfileMenuOpen) {
-//         this.isCartOpen = false
-//       }
-//     },
-
-//     closeProfileMenu() {
-//       this.isProfileMenuOpen = false
-//     },
-
-//     increaseQuantity(itemId) {
-//       const item = this.cartItems.find(item => item.id === itemId)
-//       if (item) {
-//         item.quantity++
-//       }
-//     },
-
-//     decreaseQuantity(itemId) {
-//       const item = this.cartItems.find(item => item.id === itemId)
-//       if (item && item.quantity > 1) {
-//         item.quantity--
-//       } else {
-//         this.cartItems = this.cartItems.filter(item => item.id !== itemId)
-//       }
-//     },
-
-//     goToCheckout() {
-//       this.$router.push('/checkout')
-//       this.closeCart()
-//     },
-
-//     logout() {
-//       console.log('Déconnexion...')
-//       this.closeProfileMenu()
-//     },
-
-//     handleClickOutside(event) {
-//       if (!event.target.closest('.relative')) {
-//         this.isCartOpen = false
-//         this.isProfileMenuOpen = false
-//       }
-//     }
-//   }
-// }
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
-
+//
 const router = useRouter()
 
+onMounted(() => {
+  const token = localStorage.getItem('token');
+  isLoggedIn.value = !!token; 
+  // true si token existe
+});
+
+
+const handleLogout = () => {
+  // Supprime le token
+  localStorage.removeItem('token');
+  isLoggedIn.value =false; 
+
+   // Redirige vers la page de connexion
+  router.push('/signup');
+}
 // State
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)

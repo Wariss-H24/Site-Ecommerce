@@ -3,7 +3,7 @@ import AppView from './views/AppView.vue'
 </script>
 
 <template>
-  <div class="bg-[var(--couleur-bgAll)]">
+  <div class="bg-[(--couleur-bgImage)]">
     <AppView />
     <RouterView />
   </div>

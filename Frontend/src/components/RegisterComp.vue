@@ -23,8 +23,6 @@ const handleRegister = async (e)=> {
     method : 'POST',
     headers : { 'Content-Type': 'application/json' },
     body : JSON.stringify({
-      prenom : prenom.value,
-      nom : nom.value,
       email : email.value,
       password : password.value,
       // confirmPassword : confirmPassword.value
@@ -41,7 +39,9 @@ const handleRegister = async (e)=> {
         // email.value = '';
         // password.value = '';
   }else{
-    alert(data.message);
+  const data = await resp.json(); // Ajoute cette ligne
+  alert(data.message);
+
   }
 }
 
@@ -75,7 +75,7 @@ const handleRegister = async (e)=> {
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   <i class="fas fa-user mr-2"></i>Prénom
                 </label>
-                <input v-model="prenom"  type="text" requiredclass="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 dark:bg-gray-700 dark:text-white transition-colors"placeholder="Votre prénom" />
+                <input v-model="prenom"  type="text" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gray-500 dark:bg-gray-700 dark:text-white transition-colors"placeholder="Votre prénom" />
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">

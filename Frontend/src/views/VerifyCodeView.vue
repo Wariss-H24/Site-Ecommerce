@@ -61,8 +61,8 @@ const handleVerify = async () => {
     // }, 2000);
     
   if (resp.ok) {
-    alert('Votre compte a été vérifié avec succès 🎉');
-    router.push('/signUp');
+    // alert('Votre compte a été vérifié avec succès 🎉');
+    router.push('/signup');
   } else {
     alert(data.message);
   }
@@ -100,7 +100,7 @@ const handleVerify = async () => {
   border-radius: 6px;
 }
 .btn {
-  background-color: #3498db;
+  background-color: #202325;
   color: white;
   border: none;
   padding: 0.7rem;
@@ -109,7 +109,7 @@ const handleVerify = async () => {
   transition: 0.3s;
 }
 .btn:hover {
-  background-color: #2980b9;
+  background-color:var(--couleur-bgbtn);
 }
 .message {
   text-align: center;
