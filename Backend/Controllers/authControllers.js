@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 const User = require('../models/User');
 
-
 //Configuration de Nodmail
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -20,7 +19,6 @@ const register = async(req,res) =>{
   try {
     const { email , password } =req.body
       if (!email || !password) return res.status(400).json({ message: 'Email et mot de passe requis.' });
-
       // const Controllerdb = await readDB()
       const userExistant = await User.findOne({ email });
       console.log({email ,userExistant });
@@ -45,7 +43,8 @@ const register = async(req,res) =>{
     isVerified : false,
     otp,
     otpExpires,
-    });
+  });
+  await user.save();
 
     //Configurationd'envoi de mail
     const mailOptions = {
@@ -56,10 +55,6 @@ const register = async(req,res) =>{
   };
   console.log("Envoi de l'email à :", email, "avec OTP :", otp);
    await transporter.sendMail(mailOptions);
-  // transporter.sendMail(mailOptions, (err, info) => {
-  //   if (err) console.log(err);
-  //   else console.log('Email envoyé : ' + info.response);
-  // });
 
   res.status(201).json({ message: 'Utilisateur créé avec succès' });}
    catch (err) {
@@ -67,8 +62,6 @@ const register = async(req,res) =>{
     res.status(500).json({ message: "Erreur interne du serveur" });
   }
 };
-
-
 // ROUTE POUR VÉRIFIER LE CODE OTP
 const verifyOTP = async (req, res) => {
   const { email, otp } = req.body;
@@ -80,7 +73,9 @@ const verifyOTP = async (req, res) => {
   if (!user) return res.status(400).json({ message: 'Utilisateur introuvable' });
   if (user.isVerified) return res.status(400).json({ message: 'Compte déjà vérifié' });
   
-  if (user.otp !== otp) return res.status(400).json({ message: 'Code invalide' });
+  
+  console.log("OTP reçu :", otp, " | OTP attendu :", user.otp);
+  if (user.otp !== otp.toString()) return res.status(400).json({ message: 'Code invalide' });
   if (new Date() > new Date(user.otpExpires)) return res.status(400).json({ message: 'Code expiré' });
 
   // Marquer l’utilisateur comme vérifié
@@ -107,7 +102,6 @@ const login = async (req,res) =>{
       const valid = await bcrypt.compare(password, user.password);
       if (!valid) return res.status(400).json({ message: 'Email ou mot de passe incorrect' });
       
-  
    if (!user.isVerified)
       return res.status(400).json({ message: 'Veuillez vérifier votre compte avant de vous connecter.' });
   

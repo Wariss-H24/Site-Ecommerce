@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  isVerified: { type: Boolean, default: false },
+  otp: { type: String },
+  otpExpires: { type: Date }
 });
 
 // Avant d'enregistrer un utilisateur, hasher le mot de passe
