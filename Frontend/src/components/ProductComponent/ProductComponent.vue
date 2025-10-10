@@ -16,7 +16,7 @@ onMounted(async () => {
     //Parse notre Json
     const data = await response.json()
     console.log('Données reçues :', data)
-    fetchEL.value = data.products
+    fetchEL.value = data
     console.log('Produits chargés :', fetchEL.value)
   } catch (error) {
     console.error('Erreur lors du chargement des produits :', error)

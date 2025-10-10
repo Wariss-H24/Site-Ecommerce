@@ -32,7 +32,7 @@ const produc = ref('product')
                   type="button"
                   class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
-                  <RouterLink :to="{ name: 'ProductDetails', params: { id: product.id } }">
+                  <RouterLink :to="{ name: 'ProductDetails', params: { id: product._id } }">
                     <svg
                       class="h-5 w-5"
                       aria-hidden="true"

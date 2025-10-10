@@ -22,8 +22,9 @@ if (!token) {
         'Authorization' : `Bearer ${token}`
       }
     })
+    console.log("ID du produit :", route.params._id);
     //SI la resp nes pas ok alor...
-    if (resp.status === 401 || resp.status === 403) {
+    if (resp.status === 401 || resp.status === 403){
       // Token invalide ou expiré
       localStorage.removeItem('token');
       router.push('/signup');

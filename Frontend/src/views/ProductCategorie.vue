@@ -19,7 +19,7 @@ onMounted(async () => {
   try {
     const resp = await fetch(URL)
     const data = await resp.json()
-    catfetch.value = data.products
+    catfetch.value = data
 
     UniqueCategory.value = [...new Set(catfetch.value.map((p) => p.category))]
     console.log(UniqueCategory.value)
