@@ -1,9 +1,3 @@
 {
-  "users": [
-    {
-      "email": "badawariss434@gmail.com",
-      "password": "$2b$10$iNL2CE/yrbq4U8KmPKDuU.WWAPoKRCRD2kRTIX1zfQHkdYYRK8a9.",
-      "isVerified": true
-    }
-  ]
+  "users": []
 }

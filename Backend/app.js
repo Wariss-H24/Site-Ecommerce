@@ -2,11 +2,14 @@ const  express = require("express")
 const fs= require("fs")
 const cors = require("cors")
 const app = express()
- app.use(express.json())
+app.use(express.json())
 //On charge nos donnes depuis Env
 app.use(cors());
 require("dotenv").config()
 
+const connectDB = require("./config/connectDB");
+// const { readDB, writeDB } = require("./Util.db");
+connectDB();
 //On convertis tt ce qui vien du front en JSO
 // const bodyParser = require('body-parser');
 // app.use(bodyParser.json());
@@ -76,6 +79,9 @@ app.get("/api/E-commerceProduits/:id",authenticateToken, (req, res) => {
     }
   });
 });
+
+
+
 
 app.post("/api/E-commerceProduits", (req, res) => {
   const nouveauProduit = req.body;
@@ -153,5 +159,7 @@ console.log(port);
 console.log(hostman);
 
 app.listen(port,hostman, ()=>{
+  console.log("🔍 URI chargée :", process.env.MONGO_URI);
+
     console.log(`serveur demarer sur le port ${port}`)
 })
